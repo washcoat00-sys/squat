@@ -10,21 +10,22 @@
     <div id="main-screen">
         <header>
             <h1>Squat Couunter</h1>
-            <p>Tuesday, March 17</p>
+            <p id="today-date"></p>
         </header>
         <main>
             <div class="card reps-today">
                 <div class="card-content">
                     <div>
-                        <span class="card-icon">ð</span>
+                        <span class="card-icon">🏋️</span>
                         <p>Reps Today</p>
                     </div>
                     <div class="reps-display">
                         <span id="reps-count">0</span> reps
                     </div>
                 </div>
-                <div class="goal-indicator">
-                    <p>No Goal</p>
+                <div class="goal-indicator" id="goal-indicator">
+                    <p id="goal-text">No Goal</p>
+                    <input type="number" id="goal-input" class="hidden" placeholder="Set Goal">
                 </div>
             </div>
             <div class="card-group">
@@ -32,12 +33,6 @@
                     <span class="card-icon">ð¥</span>
                     <p>Days Streak</p>
                     <span id="streak-days">0</span>
-                </div>
-                <div class="card best-streak">
-                    <p>Best Streak</p>
-                    <span id="best-streak-days">2</span> days
-                    <p>with</p>
-                    <span id="best-streak-reps">94</span> reps
                 </div>
             </div>
             <button id="start-btn" class="start-button">Start</button>

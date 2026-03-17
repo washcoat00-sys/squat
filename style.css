@@ -62,6 +62,17 @@ header p {
     background-color: #3a3a3a;
     padding: 10px 15px;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+#goal-input {
+    width: 60px;
+    background-color: #1a1a1a;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
 }
 
 .card-group {

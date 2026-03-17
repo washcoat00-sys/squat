@@ -7,11 +7,46 @@ const webcamEl = document.getElementById('webcam');
 const canvasEl = document.getElementById('canvas');
 const canvasCtx = canvasEl.getContext('2d');
 
+const todayDateEl = document.getElementById('today-date');
+const goalIndicator = document.getElementById('goal-indicator');
+const goalText = document.getElementById('goal-text');
+const goalInput = document.getElementById('goal-input');
+
 let detector;
 let reps = 0;
 let squatState = 'up'; // 'up' or 'down'
 
 async function init() {
+    // Set today's date
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    todayDateEl.innerText = new Date().toLocaleDateString('en-US', options);
+
+    // Goal input logic
+    goalIndicator.addEventListener('click', () => {
+        if (goalInput.classList.contains('hidden')) {
+            goalText.classList.add('hidden');
+            goalInput.classList.remove('hidden');
+            goalInput.focus();
+        }
+    });
+
+    goalInput.addEventListener('blur', () => {
+        const goal = goalInput.value;
+        if (goal) {
+            goalText.innerText = `Goal: ${goal}`;
+        } else {
+            goalText.innerText = 'No Goal';
+        }
+        goalInput.classList.add('hidden');
+        goalText.classList.remove('hidden');
+    });
+
+    goalInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            goalInput.blur();
+        }
+    });
+
     const detectorConfig = {
         modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING
     };
