@@ -1,14 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squat Counter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div id="main-screen">
+        <header>
+            <h1>Workout</h1>
+            <p>Tuesday, March 17</p>
+        </header>
+        <main>
+            <div class="card reps-today">
+                <div class="card-content">
+                    <div>
+                        <span class="card-icon">ð</span>
+                        <p>Reps Today</p>
+                    </div>
+                    <div class="reps-display">
+                        <span id="reps-count">0</span> reps
+                    </div>
+                </div>
+                <div class="goal-indicator">
+                    <p>No Goal</p>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="card days-streak">
+                    <span class="card-icon">ð¥</span>
+                    <p>Days Streak</p>
+                    <span id="streak-days">0</span>
+                </div>
+                <div class="card best-streak">
+                    <p>Best Streak</p>
+                    <span id="best-streak-days">2</span> days
+                    <p>with</p>
+                    <span id="best-streak-reps">94</span> reps
+                </div>
+            </div>
+            <button id="start-btn" class="start-button">Start</button>
+        </main>
+        <nav>
+            <a href="#" class="active">ðª Workout</a>
+            <a href="#">ð Progress</a>
+            <a href="#">âï¸ Settings</a>
+        </nav>
+    </div>
+
+    <div id="workout-screen" class="hidden">
+        <div class="workout-header">
+            <button id="close-workout">X</button>
+        </div>
+        <div class="video-container">
+            <video id="webcam" autoplay playsinline></video>
+            <canvas id="canvas"></canvas>
+            <div class="workout-overlay">
+                <p>Hold a squat position within the frame to begin.</p>
+            </div>
+        </div>
+        <div class="workout-controls">
+            <span>Timer: On</span>
+            <span>Sound: On</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+    <script src="main.js"></script>
 </body>
 </html>
